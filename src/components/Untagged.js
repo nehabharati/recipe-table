@@ -7,7 +7,9 @@ export default function Untagged() {
   const { items, requestSort, sortConfig } = useSortableData(status);
 
   useEffect(() => {
-    getRecipes().then((data) => setStatus(data));
+    getRecipes(
+      "https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/recipes/"
+    ).then((data) => setStatus(data));
   }, []);
 
   const getClassNamesFor = (name) => {

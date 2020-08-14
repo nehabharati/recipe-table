@@ -10,7 +10,9 @@ export default function List() {
   const [selectedCheckbox, setSelectedCheckbox] = useState([]);
 
   useEffect(() => {
-    getRecipes().then((data) => setRecipes(data));
+    getRecipes(
+      "https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/recipes/"
+    ).then((data) => setRecipes(data));
   }, []);
 
   // Tells what is the field we want to sort

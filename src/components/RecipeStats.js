@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  getMarginUp,
-  getMarginDown,
-  getFluctuation,
-} from "../utils/getRecipes";
+import { getRecipes } from "../utils/getRecipes";
 
 export default function RecipeStats() {
   const [marginUp, setMarginUp] = useState([]);
@@ -11,9 +7,15 @@ export default function RecipeStats() {
   const [fluctuate, setFluctuate] = useState([]);
 
   useEffect(() => {
-    getMarginUp().then((data) => setMarginUp(data));
-    getMarginDown().then((data) => setMarginDown(data));
-    getFluctuation().then((data) => setFluctuate(data));
+    getRecipes(
+      "https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/margin-group/?order=top"
+    ).then((data) => setMarginUp(data));
+    getRecipes(
+      "https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/margin-group/?order=bottom"
+    ).then((data) => setMarginDown(data));
+    getRecipes(
+      "https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/fluctuation-group/?order=top"
+    ).then((data) => setFluctuate(data));
   }, []);
 
   return (
