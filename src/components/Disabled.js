@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import getRecipes from "../utils/getRecipes";
+import { getRecipes } from "../utils/getRecipes";
 import useSortableData from "../hooks/useSortableData";
 
 export default function Disabled() {

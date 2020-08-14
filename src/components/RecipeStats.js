@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import getMarginUp from "../utils/getMarginUp";
-import getMarginDown from "../utils/getMarginDown";
-import getFluctuation from "../utils/getFluctuation";
+import {
+  getMarginUp,
+  getMarginDown,
+  getFluctuation,
+} from "../utils/getRecipes";
 
 export default function RecipeStats() {
   const [marginUp, setMarginUp] = useState([]);
