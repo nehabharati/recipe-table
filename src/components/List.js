@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useSortableData from "../hooks/useSortableData";
 import { getRecipes } from "../utils/getRecipes";
-import "react-picky/dist/picky.css";
 
 export default function List() {
   const [recipes, setRecipes] = useState([]);
