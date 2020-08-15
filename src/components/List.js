@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import useSortableData from "../hooks/useSortableData";
 import { getRecipes } from "../utils/getRecipes";
+import "react-picky/dist/picky.css";
 
 export default function List() {
   const [recipes, setRecipes] = useState([]);
   const { items, requestSort, sortConfig } = useSortableData(recipes);
   const [allChecked, setAllChecked] = useState(false);
   const [itemChecked, setItemChecked] = useState(false);
-  const [selectedCheckbox, setSelectedCheckbox] = useState([]);
 
   useEffect(() => {
     getRecipes(
@@ -23,16 +23,12 @@ export default function List() {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
-  function handleChange(e, name) {
+  function handleChange(e, id) {
     let item_name = e.target.name;
     let checked = e.target.checked;
     if (item_name === "checkAll") {
-      setAllChecked(!allChecked);
-      setItemChecked(!itemChecked);
-    } else {
-      // const selected = recipes.filter((i) => i.name == name);
-      // console.log(selected);
-      // setItemChecked(!selected[0].is_untagged);
+      setAllChecked(checked);
+      setItemChecked(checked);
     }
   }
 
@@ -46,7 +42,7 @@ export default function List() {
                 type="checkbox"
                 name="checkAll"
                 checked={allChecked}
-                onChange={(e, id) => handleChange(e, id)}
+                onChange={(e, id, items) => handleChange(e, id, items)}
               />
             </th>
             <th>
@@ -126,7 +122,9 @@ export default function List() {
                   name={recipe.id}
                   value={recipe.id}
                   checked={itemChecked}
-                  onChange={(e) => handleChange(e, recipe.name)}
+                  onChange={(e, id, items) =>
+                    handleChange(e, recipe.id, recipe)
+                  }
                 />
               </td>
               <td>{recipe.name}</td>

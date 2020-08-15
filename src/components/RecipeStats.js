@@ -24,7 +24,7 @@ export default function RecipeStats() {
         <h3>High Margin Recipes</h3>
         <div className="margin-container">
           {marginUp.map((progress) => (
-            <div className="margin-names">
+            <div className="margin-names" key={progress.name}>
               <p>
                 {progress.name
                   .toLowerCase()
@@ -46,7 +46,7 @@ export default function RecipeStats() {
         <h3>Low Margin Recipes</h3>
         <div className="margin-container">
           {marginDown.map((progress) => (
-            <div className="margin-names">
+            <div className="margin-names" key={progress.name}>
               <p>
                 {progress.name
                   .toLowerCase()
@@ -68,7 +68,7 @@ export default function RecipeStats() {
         <h3>Top Fluctuating Recipes</h3>
         <div className="margin-container">
           {fluctuate.map((recipe) => (
-            <div className="margin-names">
+            <div className="margin-names" key={recipe.name}>
               <p>
                 {recipe.name
                   .toLowerCase()
